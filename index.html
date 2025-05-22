@@ -1,147 +1,78 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>माँ काली की कृपा</title>
-  <! -- google adsense code -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>माँ काली की शुभकामनाएं</title>
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4488187338394055"
      crossorigin="anonymous"></script>
+
   <style>
     body {
-      margin: 0;
-      padding: 20px;
-      background: linear-gradient(to bottom, #000000, #2c2c2c);
-      color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
-    }
-
-    img {
-      width: 90%;
-      max-width: 350px;
-      border: 4px solid #ff0000;
-      border-radius: 15px;
-      box-shadow: 0 0 20px red;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .message {
-      font-size: 24px;
-      margin-top: 20px;
-      color: #ffcc00;
-    }
-
-    .subtext {
-      font-size: 18px;
-      color: #ccc;
-      margin: 10px 0;
-    }
-
-    .btn {
-      margin-top: 20px;
-      background: #25D366;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 50px;
-      font-size: 18px;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
-    }
-
-    #popup {
-      display: none;
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      color: black;
+      background-color: #fff8f0;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px red;
-      z-index: 100;
     }
-
-    #popup input {
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      color: #d10000;
+      margin-top: 20px;
+    }
+    input {
       padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
       width: 80%;
-      margin: 10px 0;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-
-    #popup button {
-      padding: 10px 20px;
-      background: #d32f2f;
+    .share-button {
+      margin-top: 20px;
+      background-color: #25d366;
       color: white;
+      padding: 12px 20px;
+      font-size: 18px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
   </style>
 </head>
 <body>
 
   <!-- Maa Kali GIF -->
-  <img src="kali.gif" alt="माँ काली">
+  <img src="your-maakali.gif" alt="Maa Kali">
 
-  <!-- Message -->
-  <div class="message">माँ काली की कृपा आप पर बनी रहे</div>
+  <!-- Blessing Message -->
+  <h2 id="blessing">माँ काली की कृपा आप पर बनी रहे</h2>
 
-  <!-- Wish by user -->
-  <div class="subtext" id="userLine">~ शुभचिंतक: आपका नाम</div>
+  <!-- Name Input -->
+  <input type="text" id="username" placeholder="अपना नाम दर्ज करें" oninput="updateShareLink()">
 
-  <!-- Personal message -->
-  <div class="subtext" id="sharedLine"></div>
-
-  <!-- WhatsApp Share Button -->
-  <a id="whatsappShare" class="btn" href="#" target="_blank">WhatsApp पर शेयर करें</a>
-
-  <!-- Email Popup -->
-  <div id="popup">
-    <p>अपना ईमेल दर्ज करें माँ काली की आशीर्वाद पाने के लिए:</p>
-    <input type="email" placeholder="अपना ईमेल लिखें">
-    <br>
-    <button onclick="closePopup()">रजिस्टर करें</button>
-  </div>
+  <!-- Share Button -->
+  <a id="whatsappShare" class="share-button" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="24">
+    शेयर करें
+  </a>
 
   <script>
-    // Get name from URL (e.g. ?name=Rahul)
-    const params = new URLSearchParams(window.location.search);
-    let userName = params.get("name");
-
-    // Ask name if not in URL
-    if (!userName) {
-      userName = prompt("अपना नाम दर्ज करें:");
-      if (userName) {
-        // Reload with name in URL
-        const currentUrl = window.location.origin + window.location.pathname + "?name=" + encodeURIComponent(userName);
-        window.location.href = currentUrl;
-      }
-    }
-
-    // Show name on page
-    if (userName) {
-      document.getElementById("userLine").innerText = "~ शुभचिंतक: " + userName;
-      document.getElementById("sharedLine").innerText = `${userName} ने आपको शुभकामनाएं भेजी हैं। नीचे लिंक पर क्लिक करें।`;
-    }
-
-    // WhatsApp Share Button
-    const shareText = `${userName} ने आपको माँ काली की शुभकामनाएं भेजी हैं!\nदेखने के लिए यहाँ क्लिक करें:\n${window.location.href}`;
-    document.getElementById("whatsappShare").href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-
-    // Email popup after 15 sec
-    setTimeout(() => {
-      document.getElementById('popup').style.display = 'block';
-    }, 15000);
-
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
+    function updateShareLink() {
+      const name = document.getElementById('username').value.trim();
+      const message = `आपको ${name ? name + ' जी ' : ''} की ओर से माँ काली की हार्दिक शुभकामनाएं! इस लिंक पर क्लिक करें: https://your-site-link.netlify.app`;
+      const encoded = encodeURIComponent(message);
+      document.getElementById('whatsappShare').href = `https://wa.me/?text=${encoded}`;
     }
   </script>
 
