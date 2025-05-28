@@ -1,80 +1,28 @@
-  <!DOCTYPE html>
-<html lang="hi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>माँ काली की शुभकामनाएं</title>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4488187338394055"
-     crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background-color: #fff8f0;
-      padding: 20px;
-    }
-    img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    h2 {
-      color: #d10000;
-      margin-top: 20px;
-    }
-    input {
-      padding: 10px;
-      margin-top: 15px;
-      font-size: 16px;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .share-button {
-      margin-top: 20px;
-      background-color: #25d366;
-      color: white;
-      padding: 12px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-  </style>
-</head>
-<body>
+  <body style="background-color: #fff7f0; font-family: 'Arial', sans-serif; margin: 0; padding: 20px; text-align: center;">
 
   <!-- Maa Kali GIF -->
-  <img src="your-maakali.gif" alt="Maa Kali">
+  <img src="kali.gif" alt="Maa Kali" style="width: 100%; max-width: 300px; height: auto; margin: 0 auto; display: block;" />
 
-  <!-- Blessing Message -->
-  <h2 id="blessing">माँ काली की कृपा आप पर बनी रहे</h2>
+  <!-- Blessing Text -->
+  <h1 style="color: red; margin-top: 20px;">माँ काली की कृपा आप पर बनी रहे</h1>
 
   <!-- Name Input -->
-  <input type="text" id="username" placeholder="अपना नाम दर्ज करें" oninput="updateShareLink()">
+  <input type="text" id="username" placeholder="अपना नाम दर्ज करें" style="padding: 10px; width: 80%; max-width: 300px; border-radius: 10px; border: 1px solid #ccc; margin: 20px auto;" />
 
   <!-- Share Button -->
-  <a id="whatsappShare" class="share-button" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="24">
-    शेयर करें
+  <a id="shareBtn" href="#" target="_blank" style="display: inline-block; margin-top: 20px; text-decoration: none;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp" style="width: 60px; height: 60px;" />
+    <div style="color: green; font-weight: bold; margin-top: 5px;">शेयर करें</div>
   </a>
 
+  <!-- Script to make dynamic link -->
   <script>
-    function updateShareLink() {
-      const name = document.getElementById('username').value.trim();
-      const message = `आपको ${name ? name + ' जी ' : ''} की ओर से माँ काली की हार्दिक शुभकामनाएं! इस लिंक पर क्लिक करें: https://your-site-link.netlify.app`;
-      const encoded = encodeURIComponent(message);
-      document.getElementById('whatsappShare').href = `https://wa.me/?text=${encoded}`;
-    }
+    document.getElementById("username").addEventListener("input", function () {
+      const name = encodeURIComponent(this.value.trim());
+      const message = `🌸 ${this.value.trim()} ने आपको माँ काली की शुभकामनाएं भेजी हैं 🌸\n👉 https://kali-wishes.netlify.app/?from=${name}`;
+      const shareURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      document.getElementById("shareBtn").href = shareURL;
+    });
   </script>
 
-</body>
-</html>
+  </body>
